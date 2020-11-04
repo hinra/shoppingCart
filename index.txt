@@ -1,0 +1,42 @@
+<html>
+    <meta charset="UTF-8"/>
+    <style>
+li { cursor: cell;}
+
+.infoBox {
+    background-color: gray;
+    border:  1px dashed darkred;
+    padding: 10px;
+    margin:  20px;
+}
+
+#Cart td {
+    border: 1px dotted black;
+    background-color: lightseagreen;
+    padding: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: medium;
+    width: 30%;
+    }
+    </style>
+
+    
+
+
+
+<Body>
+    <ul>
+        <li>Nike air</li>
+        <li>Crogs</li>
+        <li>Converse</li>
+        <li>Salomon Mid-GTX</li>
+        <li>Haglöf Super Hike</li>
+    </ul>
+    <hr>
+    <div id="purchaseInfo" class="InfoBox">Total : 0 SEK</div>
+    <table id="Cart">
+        <tr><td>Name</td><td>Pris</td></tr>
+    </table>
+</Body>
+
+</html>

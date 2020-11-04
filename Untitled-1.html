@@ -1,0 +1,30 @@
+<script>
+
+    var total = 0; 
+
+function add2Cart(namn, pris){
+    console.log(namn + " kostar " + pris); 
+    var tabell = document.getElementById("Cart");
+   
+    var rad = tabell.insertRow();
+    var cell1 = rad.insertCell();
+    cell1.innerHTML = namn; 
+    var cell2 = rad.insertCell();
+    cell2.innerHTML = pris; 
+    
+    total += pris;
+
+    var purchaseInfo = document.getElementById("purchaseInfo");
+    purchaseInfo.innerHTML = "Total: " + total +  " SEK"; 
+}
+
+    </script>
+
+
+<ul>
+    <li onclick="add2Cart('Nike Air', 1299)">Nike air</li>
+    <li onclick="add2Cart('Crogs', 299)">Crogs</li>
+    <li onclick="add2Cart('Converse ', 799)">Converse</li>
+    <li onclick="add2Cart('Salomon Mid-GTX', 2449)">Salomon Mid-GTX</li>
+    <li onclick="add2Cart('Haglöf Super Hike', 899)">Haglöf Super Hike</li>
+</ul>

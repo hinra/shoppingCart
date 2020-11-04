@@ -1,0 +1,58 @@
+<html>
+    <meta charset="UTF-8"/>
+    <style>
+body {
+    background-color: black;
+    font-family: 'Courier New', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.ConsoleBox {
+    background-color: black;
+    color: rgb(43, 199, 43);
+    border:  1px dashed darkred;
+    padding: 10px;   
+}
+
+h3 {
+    background-color: rgb(95, 93, 93);
+    border: 3px solid green;
+    padding : 10px;
+}
+    </style>
+    <script>
+        var buffer = [];
+        function writeKonsol(txt){
+    buffer.push(txt);  
+    var outtxt = '';
+ 
+         for( var i = 0; i < buffer.length; i++){
+             outtxt += buffer[i] + '<br/>'; 
+         }
+         document.getElementById("konsol").innerHTML = outtxt; 
+ }
+
+ function escapeHTML(html) {
+    return html.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+    </script>
+
+    
+<body>
+    <h3>Konsol : </h3>
+    <div id="konsol" class="ConsoleBox"></div>
+    <hr/>
+   
+    <script>
+        // Här ska kodexempel testas:
+       
+
+          
+         
+
+     </script>
+
+<hr/>
+
+
+</body>
+</html>

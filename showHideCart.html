@@ -1,0 +1,133 @@
+<html>
+<meta charset="UTF-8" />
+<style>
+    li {
+        cursor: cell;
+    }
+
+    .infoBox {
+        background-color: gray;
+        border: 1px dashed darkred;
+      
+       margin-top: 50px ;
+       
+        width: 100%;
+        display: none;
+       
+    }
+
+    .badge {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        padding: 5px 10px;
+        border-radius: 50%;
+        background: red;
+        color: white;
+    }
+
+    .bild {
+        width: 80px;
+        height: 80px;
+      float: right;
+        
+    }
+
+
+
+    #Cart td {
+        border: 1px dotted black;
+        background-color: lightseagreen;
+        padding: 5px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: medium;
+        width: 20%;
+        
+    }
+</style>
+
+
+<script>
+
+    var counter = 0;
+    var total = 0;
+
+    function rensa() {
+        var tabell = document.getElementById("Cart");
+        tabell.innerHTML = "<tr><td>Name</td><td>Pris</td></tr>";
+        counter = 0;
+         total = 0;
+         updateElements();
+       
+    }
+
+    function toggleCart() {
+       
+        var x = document.getElementById("purchaseInfo");
+     
+        if (x.style.display != "block") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function add2Cart(namn, pris) {
+        console.log(namn + " kostar " + pris + " SEK");
+
+        var tabell = document.getElementById("Cart");
+        var rad = tabell.insertRow();
+        var cell1 = rad.insertCell();
+        cell1.innerHTML = namn;
+        var cell2 = rad.insertCell();
+        cell2.innerHTML = pris + " SEK";
+
+        total += pris;
+        counter++;
+
+       updateElements();
+    }
+
+    function updateElements(){
+        document.getElementById("totalsum").innerHTML = "Total: " + total + " SEK";
+        document.getElementById("counter").innerHTML = counter;
+    }
+
+
+</script>
+
+
+<Body>
+
+    <div style="float: right;">
+        <span class="badge" id="counter">0</span>
+        <img class="bild" src="shopping_cart.png" onclick="toggleCart();" /><br/><br/>
+      <div id="totalsum">0 SEK</div>
+        <div id="purchaseInfo" class="InfoBox">
+            <table id="Cart">
+                <tr>
+                    <td>Name</td>
+                    <td>Pris</td>
+                </tr>
+            </table>
+            <button onclick="rensa()">Rensa! </button>
+        </div>
+    </div>
+    <div class="lista">
+        <ul style=" width: 60%;">
+            <li onclick="add2Cart('Nike Air', 1299)">Nike air</li>
+            <li onclick="add2Cart('Crogs', 299)">Crogs</li>
+            <li onclick="add2Cart('Converse ', 799)">Converse</li>
+            <li onclick="add2Cart('Salomon Mid-GTX', 2449)">Salomon Mid-GTX</li>
+            <li onclick="add2Cart('Haglöf Super Hike', 899)">Haglöf Super Hike</li>
+
+        </ul>
+    </div>
+
+
+
+
+
+</Body>
+
+</html>
