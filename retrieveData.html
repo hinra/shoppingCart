@@ -1,0 +1,74 @@
+<html>
+    <meta charset="UTF-8"/>
+    <style>
+body {
+    background-color: lightgrey;
+    font-family: 'Courier New', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.ConsoleBox {
+    background-color: black;
+    color: rgb(43, 199, 43);
+    border:  1px dashed darkred;
+    padding: 10px;   
+}
+
+h3 {
+    background-color: rgb(95, 93, 93);
+    border: 3px solid green;
+    padding : 10px;
+}
+    </style>
+    <script>
+
+     
+    
+
+   
+    </script>
+
+    
+<body>
+  
+
+<h1>HTML <span class="color_h1">Web Storage API</span></h1>
+
+<p class="intro">HTML web storage; better than cookies.</p>
+<hr>
+
+<h2>HTML-webblagring</h2>
+Obs! Namn / värdepar sparas alltid som <b>strängar</b>. Kom ihåg att konvertera dem till ett annat format när det behövs!
+<hr>
+<div id="lagerLista" style="background-color: yellowgreen; border: 2px solid darkgreen; padding: 20px;"></div>
+<form>
+    <label for="vname">Variabelnamn</label><br>
+    <input type="text" id="vname" name="vname" ><br>
+    <label for="vdata">Text som lagrades:</label><br>
+    <input readonly="true" type="text" id="vdata" name="vdata"><br/>
+    <button type="button" value="" onclick="retrieveDataFromBrowser();">Hämta från webbläsaren</button>
+  </form>
+ <a href="Savedata.html">Tillbaka till Savedata.html</a> (OBS! Local Storage kommer rensas)
+  </body>
+
+
+  <script>
+
+    //Läsa all sparad data från förra sidan 
+    var lista = localStorage.getItem("dataArray").split(',');
+    var res = "";
+    for(var i = 0; i < lista.length; i+=2){
+        res += lista[i] + " --> " + lista[i+1] + "<br/>";
+
+    }
+    document.getElementById("lagerLista").innerHTML ="<h2>Web Storage för denna webbplats</h2>" + res; 
+
+
+    function retrieveDataFromBrowser(){
+        var varName = document.getElementById("vname").value;
+            var outputText = document.getElementById("vdata"); 
+            outputText.value =  localStorage.getItem(varName);
+            
+    }
+
+</script>
+</html>

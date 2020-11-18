@@ -1,0 +1,96 @@
+<html>
+    <meta charset="UTF-8"/>
+    <style>
+body {
+    background-color: lightgrey;
+    font-family: 'Courier New', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.ConsoleBox {
+    background-color: black;
+    color: rgb(43, 199, 43);
+    border:  1px dashed darkred;
+    padding: 10px;   
+}
+
+h3 {
+    background-color: rgb(95, 93, 93);
+    border: 3px solid green;
+    padding : 10px;
+}
+    </style>
+    <script>
+        var buffer = [];
+        function writeKonsol(txt){
+    buffer.push(txt);  
+    var outtxt = '';
+ 
+         for( var i = 0; i < buffer.length; i++){
+             outtxt += buffer[i] + '<br/>'; 
+         }
+         document.getElementById("konsol").innerHTML = outtxt; 
+ }
+
+ function escapeHTML(html) {
+    return html.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+    </script>
+
+    
+<body>
+  
+
+<h1>HTML <span class="color_h1">Web Storage API</span></h1>
+
+<p class="intro">HTML web storage; better than cookies.</p>
+<hr>
+
+<h2>Vad är HTML-webblagring?</h2>
+Med webblagring kan webbapplikationer lagra data lokalt i användarens webbläsare.
+Innan HTML5 måste applikationsdata lagras i cookies, inkluderade i varje serverförfrågan. Webblagring är säkrare och stora mängder data kan lagras lokalt utan att påverka webbplatsens prestanda.
+<br/>Till skillnad från cookies är lagringsgränsen mycket större (minst 5 MB) och information överförs aldrig till servern.
+Webblagring är per webbplats (per domän och protokoll). Alla sidor, <b>från ett och samma webbplats</b>, kan lagra och få åtkomst till samma data.<br/><br/>
+
+<i><a href="https://www.w3schools.com/html/html5_webstorage.asp">(Hela artikel på W3C-schools></a></i>
+<hr>
+
+
+   
+    <script>
+        localStorage.clear();
+        var valuePair = [];
+        function saveData2Browser() {
+            // spara ett datapar
+            var varName = document.getElementById("vname").value;
+            var varValue = document.getElementById("vdata").value; 
+            localStorage.setItem(varName, varValue);
+
+            //spara alla datapar i seperat array
+            valuePair.push(varName);
+            valuePair.push(varValue);
+            localStorage.setItem("dataArray", valuePair);
+            console.log(valuePair);
+
+        }
+       
+
+          
+         
+
+     </script>
+
+<hr/>
+<form>
+    <label for="vname">Variabelnamn</label><br>
+    <input type="text" id="vname" name="vname" ><br>
+    <label for="vdata">Text som ska lagras:</label><br>
+    <input type="text" id="vdata" name="vdata"><br/>
+    <button type="button" value="" onclick="saveData2Browser();">Klick för att spara</button>
+  </form>
+  <a href="retrieveData.html">Byt till nästa sida för att läsa data in igen</a> 
+
+
+
+
+</body>
+</html>
