@@ -18,7 +18,7 @@
     function validation() {
         var username = document.getElementById("username").value;
         var lsn = document.getElementById("psswd").value;
-        var svar = confirm("Vill du logga in?");  // returnerar OK = true, Avbryt = false
+        var svar = confirm("Är du säkert?");  // returnerar OK = true, Avbryt = false
        
 
         // test på usernamne inte tomt
@@ -39,9 +39,9 @@
 
 <div class="loginForm">
 <form action="welcome.html">
-    Användarnamn <input id="username" type="text" /><br/>
+    välj användarnamn <input id="username" type="text" /><br/>
     <hr>
-  Lösenord   <input id="psswd" type="password" />
+  välj lösenord   <input id="psswd" type="password" />
   <hr>
   <input type="submit" value="Logga in!" onclick="return validation();" ></form>
 </form>
