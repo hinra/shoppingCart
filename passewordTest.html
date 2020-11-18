@@ -19,7 +19,7 @@
         var username = document.getElementById("username").value;
         var lsn = document.getElementById("psswd").value;
         var svar = confirm("Vill du logga in?");  // returnerar OK = true, Avbryt = false
-        return svar; // om true --> formuläret skickas, false --> stanna på sidan
+       
 
         // test på usernamne inte tomt
 
@@ -32,6 +32,8 @@
         // test om lösen innehåller 0...9
 
         // test om lösen innehåller något specialtecken. (Du bestämmer vilka)
+
+        return svar; // om true --> formuläret skickas, false --> stanna på sidan
     }
 </script>
 
