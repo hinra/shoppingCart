@@ -1,0 +1,47 @@
+
+<html>
+<meta charset="utf-8" />
+
+<body>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10;
+            margin: 0;
+            border: 1px darkred solid;
+        }
+    </style>
+
+    <div>
+        <textarea id="input" style="width: 95%;height: 180px;">
+        </textarea>
+        <button onclick="showAsTable();">Visa som tabell</button>
+    </div>
+    <hr />
+    <div id="output"></div>
+
+
+    <script>
+
+        // deklarera ett object
+        function showAsTable() {
+        var npt = document.getElementById("input").value;
+       
+        var movieData = JSON.parse(npt);  // tolka string till ett JS-objekt
+
+        // det hela som tabell
+        var tabellkod = "<table>";
+        for (let [key, value] of Object.entries(movieData)) {
+            tabellkod += "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
+        }
+        tabellkod += "</table>";
+
+        document.getElementById("output").innerHTML = tabellkod;
+        }
+    </script>
+</body>
+
+</html>

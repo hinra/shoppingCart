@@ -1,0 +1,128 @@
+<html>
+<meta charset="utf-8" />
+
+<body>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10;
+            margin: 0;
+            border: 1px darkred solid;
+        }
+
+        div { border: 1px darkblue dotted; background-color: lightskyblue; padding : 20px }
+    </style>
+
+    <div id="output"></div>
+    <hr />
+    <div id="output2"><i><h5>Används för del 2</h5></i></div>
+    <hr />
+    <div id="output3"><i><h5>Används för del 3</h5></i></div>
+
+
+    <script>
+        // Del1
+        // deklarera ett object
+        // i motsatsen till array
+        // var person = ["Tiffany Person", 35, "livscoach"] ; 
+
+        var person = { name: "Maakus Person", alder: 35, titel: "livscoach" }
+
+        // lägg till ny egenskap
+        person.adress = "Stoogatan 12, 51022 Maakaryd";
+
+        // ändra egenskaper
+        person.alder += 1;
+
+        //länk till DIV med ID = output, rewrite innerhtml
+        var output = document.getElementById("output");
+        output.innerHTML = person.name + "<br/>" + person.alder + "<br/><b>" + person.titel + "</b><br/>";
+
+        // lägga tillen metod till objektet.
+        person.birthyear = function (aktuellAr) {
+            return aktuellAr - this.alder;
+        }
+
+        // objekt kan användas som array med nyckel istället för index
+        console.log(person['name']);
+        output.innerHTML += "<br/> född " + person.birthyear(2020);
+
+        var allaEgenskaper = Object.keys(person); // returnar en array med alla egenskaper
+
+        // addera till DIV output
+        output.innerHTML += "<br/> alla kända egenskaper (key, nycklar): " + allaEgenskaper;
+
+        var allaVarden = Object.values(person); // returnerar array med alla värden
+
+        // addera till DIV output
+        output.innerHTML += "<br/> alla värden  (values): " + allaVarden;
+
+        /* Del 2
+        // det hela som tabell
+        var tabellkod = "<table>";
+        for (var [key, value] of Object.entries(person)) {
+            tabellkod += "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
+        }
+        tabellkod += "</table>";
+
+        document.getElementById("output2").innerHTML = tabellkod;
+
+        // uppgifter och utmaningar
+        // a) Se till att tabellen har ett tabellhuvud/kolumnbeteckning ( typ nyckel och värde)
+        // b) Utöka till tre kolumner, första kolumn ska blir numrering, sedan nyckel och värde
+        // c) utöka objektet person med en ny egenskap 'favoritlink'. länken sa bli https://www.youtube.com/watch?v=453HH1h7ZXs
+        //      och den ska bli klickbar! (ifs-sats i loopen)
+
+        /* Del 3
+        // Array med objekt
+        var allaDjur = []; // tom array
+        var gunter = {
+            name: "Gunter",
+            origin: "Adventure Time",
+            canFly: false,
+            sayHello: function () {
+                console.log("QUACK!!!");
+            }
+        };
+
+        var ramon = {
+            name: "Ramón",
+            origin: "Happy Feet",
+            canFly: true,
+            sayHello: function () {
+                console.log("Estoy encantado de conocerle.");
+            }
+        };
+
+        var fred = {
+            name: "Fred",
+            origin: "Sitting Ducks",
+            canFly: false,
+            sayHello: function () {
+                console.log("Hi there!");
+            }
+        };
+
+        allaDjur.push(gunter); 
+        allaDjur.push(ramon);
+        allaDjur.push(fred); 
+
+        //Skriv ut alla namn
+        var output3 = document.getElementById("output3");
+        for( var i = 0; i < allaDjur.length; i++){
+            output3.innerHTML += allaDjur[i].name + "<br/>"; 
+
+        }
+        
+        // Gör EN tabell och presentera alla djur, ett djur per rad.
+        
+        */
+        
+
+    </script>
+</body>
+
+</html>

@@ -11,29 +11,59 @@
                 text-align: center;
                 font-family: Arial, Helvetica, sans-serif;
             }
+
+            .hiddenMsg {
+                display: none;
+                color : white;
+                background-color: red;
+                border: solid 1px darkred;
+            }
  
         </style>
 <script>
 
     function validation() {
-        var username = document.getElementById("username").value;
+        var usrname = document.getElementById("username").value;
         var lsn = document.getElementById("psswd").value;
-        var svar = confirm("Är du säkert?");  // returnerar OK = true, Avbryt = false
+        var langd = false;  // flaggorna
+        var stor = false;
+        var liten = false; 
+        var siffra = false;
+        var special = false; 
+
        
-
-        // test på usernamne inte tomt
-
-        // test på lösenord inte tomt
+        var storaBok = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var litenBok = storaBok.toLowerCase(); 
+        var siffror ="012456789";
+        var specialtecken = "!#¤%&/?+*"; 
+        var msg =""; 
+       
+        
+        for(var i = 0; i < lsn.length; i++){
 
         // test om lösen innehåller a...z
+        if(litenBok.includes(lsn.charAt(i)) ) { liten = true;}
 
         // test om lösen innehåller A..Z
-
+        if(storaBok.includes(lsn.charAt(i))) { stor = true;}
+        
         // test om lösen innehåller 0...9
+        if(siffror.includes(lsn.charAt(i))) {siffra = true;}
 
         // test om lösen innehåller något specialtecken. (Du bestämmer vilka)
-
-        return svar; // om true --> formuläret skickas, false --> stanna på sidan
+        if(specialtecken.includes(lsn.charAt(i)) ) { special = true;}
+        } // slut på for-varje bokstav
+       if(liten && stor && siffra && special) {return true;}
+        else {
+            if(! liten) { msg = "Det saknas en liten bokstav<br>" ;}
+            if(! stor) { msg += "Det saknas en stor bokstav<br>" ;}
+            if(! siffra) { msg += "Det saknas en siffra<br>" ;}
+            if(! special) { msg += "Det saknas ett specialtecken<br>" ;}
+            document.getElementById("errormsg").innerHTML = msg;
+            document.getElementById("errormsg").style.display = "block";  
+            return false;
+        }
+        // om true --> formuläret skickas, false --> stanna på sidan
     }
 </script>
 
@@ -43,8 +73,9 @@
     <hr>
   välj lösenord   <input id="psswd" type="password" />
   <hr>
-  <input type="submit" value="Logga in!" onclick="return validation();" ></form>
+  <input type="submit" value="Logga in!" onclick="return validation();" >
 </form>
+<div class="hiddenMsg" id="errormsg"></div>
 </div>
     </body>
 </html>
