@@ -1,0 +1,20 @@
+<img id="myImg" alt="HTML5 Logo" src="https://mlarsson.se/static/html5-logo-medium.png" width="363" height="512">
+<p>Click the button to display each attribute's name and value of the image above.</p>
+<button onclick="myFunction()">Try it</button>
+<button onclick="changeSize()">Ändra storlek</button>
+<p id="demo"></p>
+<script>    
+    function myFunction() {
+        var x = document.getElementById("myImg");
+        var txt = "";
+        for (var i = 0; i < x.attributes.length; i++) {
+            txt = txt + x.attributes[i].name + " = " + x.attributes[i].value + "<br>";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
+
+    function changeSize(){ 
+        var pic = document.getElementById("myImg");
+        pic.setAttribute("width", "80"); 
+    }
+</script>

@@ -1,0 +1,119 @@
+<html>
+<meta charset="utf-8" />
+<style>
+    p {
+        margin: 12px;
+        color: darkred;
+        background-color: lightgray;
+        width: 80%;
+        align-self: center;
+    }
+</style>
+
+<script>
+    var state = "odd";
+    var someColors = ["black", "green", "blue", "yellow"];
+
+    function createTable() {
+        var counter = 1; 
+        var para = document.getElementById('inledning');
+        var tbl = document.createElement('table');
+        tbl.style.width = '100%';
+        var tbdy = document.createElement('tbody');
+        for (var i = 0; i < 3; i++) {
+            var tr = document.createElement('tr');
+            
+            for (var j = 0; j < 4; j++) {                
+                    var td = document.createElement('td');
+                    td.style.border = "1px solid blue"; 
+                    td.appendChild(document.createTextNode('some text ' + counter++))
+                    tr.appendChild(td)
+            }
+            tbdy.appendChild(tr);
+        }
+        tbl.appendChild(tbdy);
+        para.appendChild(tbl)
+    }
+
+    function boldStyle(obj) {
+        obj.style.fontWeight = "bold";
+    }
+    function regularStyle(obj) {
+        obj.style.fontWeight = "normal";
+    }
+
+    function changeAllp() {
+        var alla_p = document.getElementsByTagName("p");
+        if (state == "odd") {
+            state = "even";
+            for (var i = 0; i < alla_p.length; i++) {
+                alla_p[i].style.color = "black";
+                alla_p[i].style.border = "3px dotted yellow";
+            }
+        }
+        else {
+            state = "odd";
+            for (var i = 0; i < alla_p.length; i++) {
+                alla_p[i].style.color = "darkred";
+                alla_p[i].style.border = "none";
+            }
+        }
+    }
+
+</script>
+
+<body>
+    <h3>Alla färger</h3>
+    <div id="colorList"></div>
+    <h2>Paragraph 1</h2>
+    <p id="inledning">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Quisque sed pellentesque nibh, nec accumsan risus.
+        Quisque non tempor orci. Sed interdum purus fermentum elementum facilisis. Proin blandit turpis eget dui
+        vehicula, nec elementum sapien dignissim.
+    </p>
+
+    <h2>Paragraph 2</h2>
+    <p id="main" onmouseover="boldStyle(this);" onmouseout="regularStyle(this);">
+        Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque quis iaculis
+        neque, et sodales nisi. Nullam quam metus, tincidunt in semper non, suscipit dictum erat. Nullam ullamcorper
+        elementum consectetur.
+    </p>
+    <h2>Paragraph 3</h2>
+    <p id="main2">
+        Praesent sollicitudin placerat velit, nec mattis augue rutrum quis. Nulla pulvinar, odio non ornare feugiat,
+        arcu libero dapibus sapien, quis tincidunt nibh risus et arcu. Donec sagittis accumsan nibh vitae venenatis.
+        Suspendisse venenatis faucibus purus, eget aliquet sem dapibus et.
+    </p>
+    <h2>Paragraph 4</h2>
+    <p id="Epilog">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Quisque sed pellentesque nibh, nec accumsan risus.
+        Quisque non tempor orci. Sed interdum purus fermentum elementum facilisis. Proin blandit turpis eget dui
+        vehicula, nec elementum sapien dignissim.
+    </p>
+
+    <h2>Paragraph 5</h2>
+    <p id="Register" onmouseover="boldStyle(this);" onmouseout="regularStyle(this);">
+        Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque quis iaculis
+        neque, et sodales nisi. Nullam quam metus, tincidunt in semper non, suscipit dictum erat. Nullam ullamcorper
+        elementum consectetur.
+    </p>
+    
+    <button onclick="changeAllp();" value="">Ändra alla p-taggar</button>
+    <button onclick="createTable();" value="">lägg till en tabell</button>
+    <script>
+        /*  a) när man klickar på 'Paragraph 1' ska det ändras till 'Avsnitt 1' (onclick)
+        
+             ) gör en metod som ändra alla h2's text från Paragraph x till Avsnitt x, dvs innerHTML ändras.
+         *     Metoden utlöses med en knapp.
+            b) skapa en <ul>-lista som lista med alla färger som finns i 'someColor'. listan ska genereras med JS.
+                Skapandes kan utlösas med en
+            b) skriv en funktion som hämta en färg från 'someColor' och gör den till bakgrundsfärg
+         *      på den som klicktes.
+         */
+    </script>
+
+</body>
+
+</html>

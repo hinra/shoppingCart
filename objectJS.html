@@ -41,6 +41,7 @@
         var output = document.getElementById("output");
         output.innerHTML = person.name + "<br/>" + person.alder + "<br/><b>" + person.titel + "</b><br/>";
 
+
         // lägga tillen metod till objektet.
         person.birthyear = function (aktuellAr) {
             return aktuellAr - this.alder;
@@ -60,11 +61,12 @@
         // addera till DIV output
         output.innerHTML += "<br/> alla värden  (values): " + allaVarden;
 
-        /* Del 2
+        
         // det hela som tabell
         var tabellkod = "<table>";
+            
         for (var [key, value] of Object.entries(person)) {
-            tabellkod += "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
+            tabellkod += "<tr><td>" + key + "</td><td>" + value + "</td></tr>\n";
         }
         tabellkod += "</table>";
 
