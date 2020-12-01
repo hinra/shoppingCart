@@ -11,7 +11,7 @@
 </style>
 
 <script>
-    var state = "odd";
+   
     var someColors = ["black", "green", "blue", "yellow"];
 
     function createTable() {
@@ -42,18 +42,20 @@
         obj.style.fontWeight = "normal";
     }
 
+    var state = "odd";
     function changeAllp() {
         var alla_p = document.getElementsByTagName("p");
-        if (state == "odd") {
-            state = "even";
+       
+            
             for (var i = 0; i < alla_p.length; i++) {
+                if (state == "odd") {
+                    state = "even";
                 alla_p[i].style.color = "black";
                 alla_p[i].style.border = "3px dotted yellow";
             }
-        }
+        
         else {
             state = "odd";
-            for (var i = 0; i < alla_p.length; i++) {
                 alla_p[i].style.color = "darkred";
                 alla_p[i].style.border = "none";
             }
