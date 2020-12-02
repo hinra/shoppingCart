@@ -1,0 +1,75 @@
+<html>
+<meta charset="utf-8" />
+<style>
+    body {
+        background: #222;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif
+    }
+
+    p {
+        margin: 12px;
+        color: darkred;
+        background-color: lightgray;
+        width: 80%;
+        align-self: center;
+        box-sizing: border-box;
+        padding: 3px;
+    }
+
+    h2 {
+        display: inline-block;
+        margin: 0;
+    }
+</style>
+
+<body>
+
+    <div id="kortTabell">
+
+    </div>
+
+</body>
+<script>
+
+    var imgName = []; 
+    var bild = ["diamond","heart" , "spade" ,"club" ]; 
+    var varde = [1,2,3,4,5,6,7,8,9,10,"Jack","Queen","King"];
+
+// generera img-filnamn
+    for(var b = 0; b < bild.length; b++) {
+        for(var v = 0; v < varde.length; v++)
+        imgName.push( bild[b] + "-" + varde[v] + ".gif"); 
+    }
+     
+
+function showCardTable() {
+
+        var picCounter=0; 
+        var div = document.getElementById('kortTabell');
+        var tbl = document.createElement('table');
+        tbl.style.width = '100%';
+        var tbdy = document.createElement('tbody');
+        for (var i = 0; i < 4; i++) {
+            var tr = document.createElement('tr');
+
+            for (var j = 0; j < 13; j++) {
+                var td = document.createElement('td');
+                td.style.border = "1px solid green";
+                var pic = document.createElement("img"); 
+                pic.src = "cards/" + imgName[picCounter++]; 
+                td.appendChild(pic)
+                tr.appendChild(td)
+            }
+            tbdy.appendChild(tr);
+        }
+        tbl.appendChild(tbdy);
+        div.appendChild(tbl)
+    }
+
+
+showCardTable(); 
+
+</script>
+
+</html>
