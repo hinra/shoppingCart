@@ -1,0 +1,191 @@
+<html>
+<meta charset="utf-8" />
+<style>
+    body {
+        background: #222;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif
+    }
+
+    p {
+        margin: 12px;
+        color: darkred;
+        background-color: lightgray;
+        width: 80%;
+        align-self: center;
+        box-sizing: border-box;
+        padding: 3px;
+    }
+
+    h2 {
+        display: inline-block;
+        margin: 0;
+    }
+</style>
+
+<script>
+    var someColors = ["black", "green", "blue", "yellow","#981818" , "purple"];
+
+    function createTable() {
+        var counter = 1;
+        var para = document.getElementById('inledning');
+        var tbl = document.createElement('table');
+        tbl.style.width = '100%';
+        var tbdy = document.createElement('tbody');
+        for (var i = 0; i < 3; i++) {
+            var tr = document.createElement('tr');
+
+            for (var j = 0; j < 4; j++) {
+                var td = document.createElement('td');
+                td.style.border = "1px solid blue";
+                td.appendChild(document.createTextNode('some text ' + ++counter))
+                tr.appendChild(td)
+            }
+            tbdy.appendChild(tr);
+        }
+        tbl.appendChild(tbdy);
+        para.appendChild(tbl)
+    }
+
+    function boldStyle(obj) {
+        obj.style.fontWeight = "bold";
+    }
+
+    function regularStyle(obj) {
+        obj.style.fontWeight = "normal";
+    }
+
+    function activeHeader(lmnt) {
+        var syster = lmnt.previousElementSibling;
+        syster.style.border = "1px solid red";
+        lmnt.style.border = "1px solid red";
+        lmnt.onmouseout = 'passiveHeader(this)'
+                    
+    }
+
+    function passiveHeader(lmnt) {
+        alert("asdfasd"); 
+        var syster = lmnt.previousElementSibling;
+                     syster.style.border = "none";
+                     lmnt.style.border = "none";
+
+    }
+
+    function changeAllp() {
+        var alla_p = document.getElementsByTagName("p");
+        for (var i = 0; i < alla_p.length; i++) {
+            if (i % 2) { // noll tolkas som false allt annan som true
+                alla_p[i].style.color = "black";
+                alla_p[i].style.border = "3px dotted yellow";
+                alla_p[i].style.padding = "0px";
+            } else {
+                alla_p[i].style.color = "darkred";
+                alla_p[i].style.border = "none";
+            }
+        }
+    }
+</script>
+
+<body>
+    <h3>Alla färger</h3>
+    <div id="colorList"></div>
+    <h2 id="para1" onclick="ChangeHeading();">Paragraph 1</h2>
+    <p id="inledning" >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Quisque sed pellentesque nibh, nec accumsan risus.
+        Quisque non tempor orci. Sed interdum purus fermentum elementum facilisis. Proin blandit turpis eget dui
+        vehicula, nec elementum sapien dignissim.
+    </p>
+
+    <h2>Paragraph 2</h2>
+    <p id="main">
+        Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque quis iaculis
+        neque, et sodales nisi. Nullam quam metus, tincidunt in semper non, suscipit dictum erat. Nullam ullamcorper
+        elementum consectetur.
+    </p>
+    <h2>Paragraph 3</h2>
+    <p id="main2">
+        Praesent sollicitudin placerat velit, nec mattis augue rutrum quis. Nulla pulvinar, odio non ornare feugiat,
+        arcu libero dapibus sapien, quis tincidunt nibh risus et arcu. Donec sagittis accumsan nibh vitae venenatis.
+        Suspendisse venenatis faucibus purus, eget aliquet sem dapibus et.
+    </p>
+    <h2>Paragraph 4</h2>
+    <p id="Epilog">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Quisque sed pellentesque nibh, nec accumsan risus.
+        Quisque non tempor orci. Sed interdum purus fermentum elementum facilisis. Proin blandit turpis eget dui
+        vehicula, nec elementum sapien dignissim.
+    </p>
+
+    <h2>Paragraph 5</h2>
+    <p id="Register" >
+        Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque quis iaculis
+        neque, et sodales nisi. Nullam quam metus, tincidunt in semper non, suscipit dictum erat. Nullam ullamcorper
+        elementum consectetur.
+    </p>
+    <h3>Färglista</h3>
+    <p id="colorlist"></p>
+
+    <button onclick="changeAllp();">Ändra alla p-taggar</button>
+    <button onclick="createTable();">Lägg till en tabell</button>
+    <button onclick="changeAllh2();">Ändra alla h2-taggar</button>
+    <button onclick="createColorList();">Skapa Färglista (ul)</button>
+    <script>
+        //  a) när man klickar på 'Paragraph 1' ska det ändras till 'Avsnitt 1' (onclick)
+        // andra rad 92 till:  <h2 id="para1" onclick="ChangeHeading();">Paragraph 1</h2>
+        function ChangeHeading() {
+            document.getElementById("para1").innerHTML = "Avsnitt 1";
+        }
+       
+        // b) gör en metod som ändra alla h2's text från Paragraph x till Avsnitt x, dvs innerHTML ändras.  
+        //    Metoden utlöses med en knapp.
+        function changeAllh2() {
+        var alla_h2 = document.getElementsByTagName("h2");
+        for (var i = 0; i < alla_h2.length; i++) {
+           var avNR = i+1;
+           alla_h2[i].innerHTML = "Avsnitt " + avNR; 
+        }
+    }
+         
+         // c) skapa en <ul>-lista som lista med alla färger som finns i 'someColor'. listan ska genereras med JS.
+         //    Skapandet kan utlösas med en knapp. Listan kan lägga till en befintlig paragraph eller ny. 
+
+         function createColorList(){
+            var targetParagraph = document.getElementById('colorlist');  // referens på målparagraph
+        var ul = document.createElement('ul');  // skapa ul-element
+        someColors.forEach(function(item)       // iterera över array 'someColors'
+                {
+                    var liElement = document.createElement('li');  // skapa li-element
+                    liElement.appendChild(document.createTextNode(item)); // skapa textNode och gör till barn till li-element
+                    ul.appendChild(liElement);  // gör li-element till ett barn till ul
+                }
+            );
+            targetParagraph.appendChild(ul); 
+
+         }
+
+         //   b) skriv en funktion som hämta slumpmässig en färg från 'someColor' och gör den till bakgrundsfärg
+         //      på den som klicktes.
+
+         // Först behöver alla paragrafer en onclick-metod. Antingen  läggs det till i html-koden: onclick="changeColor(this)"
+         function changeColor() {             
+            var slump = Math.floor( Math.random() * someColors.length);
+               this.style.backgroundColor = someColors[slump]; // this är en referens till den som ropar metoden. 
+            }
+         
+         // eller via JS: 
+         function AddEventHandler() {
+        var alla_p = document.getElementsByTagName("p"); // Hämta alla p-taggar som lista
+        for (var i = 0; i < alla_p.length; i++) { // iterera över all 
+            alla_p[i].onclick = changeColor  // definiera onclick metod. 
+        }
+    }
+    AddEventHandler(); 
+
+    
+    
+    </script>
+
+</body>
+
+</html>
