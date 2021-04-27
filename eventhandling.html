@@ -1,0 +1,74 @@
+<html>
+<meta charset="UTF-8" />
+<style>
+    body {
+        background-color: lightgrey;
+        font-family: 'Courier New', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .ConsoleBox {
+        background-color: black;
+        color: rgb(43, 199, 43);
+        border: 1px dashed darkred;
+        padding: 10px;
+    }
+
+    h3 {
+        background-color: rgb(95, 93, 93);
+        border: 3px solid green;
+        padding: 10px;
+    }
+</style>
+<script>
+    var saker = [
+                    {type : "Motherboard", name : "ASUS Z290 Gaming", price : "1299", quantity : "1"},
+                    {type : "Processor", name : "Intel I7-9600", price : "3649" , quantity : "1"} ,  
+                     {type : "RAM ", name : "Corsair 8 GB 3266MHz", price : "1769" , quantity : "2"}   
+                ] 
+    
+  
+
+
+
+    function createTable() {
+        var counter = 1;
+        var shoppingList = document.getElementById('shoppinglist');
+        var tbl = document.createElement('table');
+        tbl.style.width = '60%';
+        for (var i = 0; i < saker.length; i++) {
+            var tr = document.createElement('tr');           
+               
+                tr.appendChild(createtableCell(counter));
+                tr.appendChild(createtableCell(saker[i].type));
+                tr.appendChild(createtableCell(saker[i].name));
+                tr.appendChild(createtableCell(saker[i].price));
+                tr.appendChild(createtableCell(saker[i].quantity));
+
+                var btnCell = createtableCell(''); 
+                var btn = document.createElement('button');
+                btn.textContent = "Radera"; 
+                btnCell.appendChild(btn); 
+                tr.appendChild(btnCell);             
+             tbl.appendChild(tr);
+        }
+
+        shoppingList.appendChild(tbl);
+    }
+
+    function createtableCell(content){
+        var td = document.createElement('td');
+                td.style.border = "1px solid blue";
+                td.appendChild(document.createTextNode(content))
+        return td; 
+    }
+</script>
+
+
+<body onload="createTable(); ">
+    <div id="shoppinglist">
+        <h3> du håller på att köpa </h3>
+    </div>
+
+</body>
+
+</html>

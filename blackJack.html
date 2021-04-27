@@ -29,6 +29,10 @@
         display: inline-block;
         margin: 0;
     }
+
+
+
+
 </style>
 
 <body onload="prepareTable();">
@@ -111,7 +115,12 @@
     }
 
     function ComputerMove() {
-        datorKort.push(allaKort.shift());
+        var sum = 0;
+        while(sum < 16){
+            var nyKort = allaKort.shift();
+            sum+= nyKort.points; 
+        datorKort.push(nyKort);
+        }
         showCardTable();
         var div = document.getElementById('datornskort');
         div.innerHTML = "";
@@ -151,7 +160,7 @@
 
 <div id="kortTabell"></div>
 <hr />
-<div><button onclick="nextCard();">Nytt kort</button>
+<div ><button onclick="nextCard();">Nytt kort</button>
     <button onclick="ComputerMove();">Jag är klart</button></div>
 <table>
     <tr>
